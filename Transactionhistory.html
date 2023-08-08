@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+ <!--
+        I declare that this code was written by me. 
+ I will not copy or allow others to copy my code. 
+ I understand that copying code is considered as plagiarism.
+ 
+ Student Name: Triston lim
+ Student ID: 22012871
+ Class: E63C
+ Date/Time Last modified: 11.06 am 1/8/2023
+ 
+    -->
+<head>
+    <title>Transaction history</title>
+    <style>
+    .boxforhistory{
+        position: absolute;
+        background-color: grey;
+        bottom: calc(77%);
+        left: 0%;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        height: 150px;
+    }
+    h1{
+        font-size: 40px;
+        position: absolute;
+        right: 86%;
+    }
+    h2{
+        font-size: 40px;
+        position: absolute;
+        top: calc(1%);
+        right: 76%;
+    }
+    h3{
+        font-size: 40px;
+        position: absolute;
+        top: calc(0%);
+        right: 66%;
+    }
+    h4{
+        font-size: 40px;
+        position: absolute;
+        top: calc(-6%);
+        right: 40%;
+    }
+    h5{
+        font-size: 40px;
+        position: absolute;
+        top: calc(-13%);
+        right: 29%;
+    }
+    h6{
+        font-size: 40px;
+        position: absolute;
+        top: calc(-27%);
+        right: 19%;
+    }
+
+    h7{
+        font-size: 40px;
+        position: absolute;
+        top: calc(27%);
+        right: 9%;
+        font-family:sans-serif;
+    }
+h8{
+    font-size: 20px;
+        position: absolute;
+        top: calc(16%);
+        right: 85.5%;
+        font-family:sans-serif;
+}
+h9{
+    font-size: 20px;
+        position: absolute;
+        top: calc(16%);
+        right: 74.5%;
+        font-family:sans-serif;
+}
+h10{
+    font-size: 20px;
+        position: absolute;
+        top: calc(16%);
+        right: 67.5%;
+        font-family:sans-serif;
+}
+h11{
+    font-size: 20px;
+        position: absolute;
+        top: calc(16%);
+        right: 41%;
+        font-family:sans-serif;
+}
+h12{
+    font-size: 20px;
+        position: absolute;
+        top: calc(16%);
+        right: 27.5%;
+        font-family:sans-serif;
+}
+h13{
+    font-size: 20px;
+        position: absolute;
+        top: calc(16%);
+        right: 18.5%;
+        font-family:sans-serif;
+}
+h14{
+    font-size: 20px;
+        position: absolute;
+        top: calc(16%);
+        right: 6%;
+        font-family:sans-serif;
+}
+</style>
+<body>
+    <div class = "boxforhistory">
+<h1>
+    Date
+</h1>
+<h2>
+    Type
+</h2>
+<h3>
+    Name
+</h3>
+<h4>
+    Payment
+</h4>
+<h5>
+    Gross
+</h5>
+<h6>
+    Fee
+</h6>
+<h7>
+    Net
+</h7>
+    </div>
+<h8>
+    30/5/2023
+</h8>
+<h9>
+   Payment to
+</h9>
+<h10>
+    Josh
+</h10>
+<h11>
+    Completed
+</h11>
+<h12 id = "balanceDisplay" >
+   
+</h12>
+<h13>
+    0.00 
+</h13>
+<h14 id = "balancechange" >
+  
+</h14>
+</body>
+
+<script>
+        const paymentAmount = localStorage.getItem("paymentAmount");
+
+document.getElementById("balanceDisplay").innerHTML = `$${paymentAmount} SGD`;
+document.getElementById("balancechange").innerHTML = `$${paymentAmount} SGD`;
+</script>
+
+
+</html>

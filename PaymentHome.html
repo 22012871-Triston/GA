@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<!--
+    I declare that this code was written by me.
+    I will not copy or allow others to copy my code.
+    I understand that copying code is considered as plagiarism.
+
+    Student Name: Triston lim
+    Student ID: 22012871
+    Class: E63C
+    Date/Time Last modified: 11.06 am 1/8/2023
+-->
+
+<head>
+    <title>Payment Home page</title>
+</head>
+<style>
+    body {
+        background-color: grey;
+    }
+
+    .box {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 1px;
+        margin-top: 130px;
+        margin-left: 60px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        width: 23%;
+    }
+
+    .boxforpayment {
+        background-color: rgb(94, 94, 252);
+        padding: 10px;
+        border-radius: 40px;
+        margin-top: 40px;
+        margin-left: 25px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 80%;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 35px;
+        margin-left: 70px;
+    }
+
+    p {
+        color: grey;
+        font-size: 20px;
+    }
+
+    nav {
+        margin-left: 73px;
+        font-size: 20px;
+    }
+
+    .conversion {
+        background-color: grey;
+        color: white;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        width: 370px;
+        margin-left: -20px;
+    }
+
+    .img1 {
+        position: absolute;
+        top: calc(28%);
+        margin-left: 530px;
+    }
+
+    .img2 {
+        position: absolute;
+        top: calc(26%);
+        margin-left: 870px;
+    }
+
+    .img3 {
+        position: absolute;
+        top: calc(22%);
+        margin-left: 1200px;
+    }
+
+    .box1 {
+        background-color: white;
+        color: black;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        width: 210px;
+        margin-left: -20px;
+    }
+
+    .box2 {
+        background-color: white;
+        color: black;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        width: 160px;
+        margin-left: -20px;
+    }
+
+    .box3 {
+        background-color: white;
+        color: black;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        width: 200px;
+        margin-left: -20px;
+    }
+
+    text {
+        margin-left: 27px;
+        font-size: 20px;
+    }
+
+    h4 {
+        margin-left: 73px;
+        font-size: 20px;
+    }
+
+</style>
+
+<body>
+    <div class="box">
+        <h1>
+            Paypex balance:
+        </h1>
+        <h2 id="balanceDisplay">
+        </h2>
+        <p>
+            Available
+        </p>
+        <div class="conversion">
+            <nav id="balanceSGD">
+
+            </nav>
+            <h4 id="balanceUSD">
+            </h4>
+        </div>
+        <div class="boxforpayment">
+            <h3 class="start" onclick="redirectCreatenew()">Transfer<br>Payment</h3>
+        </div>
+    </div>
+    <div class="img1">
+        <img src="msg5393127203-70074.jpg">
+        <div class="box1">
+            <text class="start" onclick="addcardredirect()">Add Card Payment</text>
+        </div>
+    </div>
+    <div class="img2">
+        <img src="msg5393127203-70075.jpg">
+        <div class="box2">
+            <text class="start" onclick="sendpaymentredirect()">Send Payment</text>
+        </div>
+    </div>
+    <div class="img3">
+        <img src="msg5393127203-70076.jpg">
+        <div class="box3">
+            <text class="start" onclick="transactionhistoryredirect()">Transaction history</text>
+        </div>
+    </div>
+</body>
+<script>
+    function redirectCreatenew() {
+        window.location.href = "TransferPayment.html";
+    }
+
+    function addcardredirect() {
+        window.location.href = "CardInformation.html";
+    }
+
+    function sendpaymentredirect() {
+        window.location.href = "sendpayment.html";
+    }
+
+    function transactionhistoryredirect() {
+        window.location.href = "Transactionhistory.html";
+    }
+
+    // Function to update the balance and display the new value
+    function updateBalanceDisplay() {
+            const balance = parseFloat(localStorage.getItem("balance")) || 100.50;
+            document.getElementById("balanceDisplay").innerText = `Balance: $${balance.toFixed(2)}`;
+        }
+
+        // Call the function to update the balance display on page load
+        updateBalanceDisplay();
+
+        // Function to update the balance and display the new value
+        function updateBalanceSGD() {
+            const balance = parseFloat(localStorage.getItem("balance")) || 100.50;
+            document.getElementById("balanceSGD").innerText = ` SGD...................${balance.toFixed(2)}SGD`;
+        }
+
+        // Call the function to update the balance display on page load
+        updateBalanceSGD();
+
+        function updateBalanceUSD() {
+            const sgdBalance = parseFloat(localStorage.getItem("balance")) || 100.50;
+            const usdBalance = sgdBalance * 0.75;
+            document.getElementById("balanceUSD").innerText = ` USD...................${usdBalance.toFixed(2)}USD`;
+        }
+
+        updateBalanceUSD();
+</script>
+
+</html>

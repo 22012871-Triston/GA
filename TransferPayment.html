@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+ <!--
+        I declare that this code was written by me. 
+ I will not copy or allow others to copy my code. 
+ I understand that copying code is considered as plagiarism.
+ 
+ Student Name: Triston lim
+ Student ID: 22012871
+ Class: E63C
+ Date/Time Last modified: 11.06 am 1/8/2023
+ 
+    -->
+<head>
+    <title>Top up</title>
+    <style>
+body{
+    background:linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+ .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  input[type="text"],
+    select {
+        width: 200px;
+   height: 30px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    
+    .card {
+      width: 400px;
+      height: 500px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card2{
+        width: 320px;
+      height: 170px;
+      background:linear-gradient(135deg, #71b7e6, #9b59b6);
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: -320px;
+      margin-left: 0px;
+    }
+    h1{
+margin-left: 15px;
+font-size: 30px;
+position: absolute;
+        bottom: calc(60%);
+    }
+    p{
+        position: relative;
+        top: calc(-5%);
+    }
+    .boxfortopup{
+        position: relative;
+        background-color: wheat;
+        bottom: calc(-54%);
+        padding: 10px;
+        border-radius: 40px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 20%;
+    }
+    nav{
+margin-left: 15px;
+    }
+    </style>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card2">
+                <h2 id="balanceDisplay">Balance: $100.50</h2>
+                <form action="#">
+                    <label for="amt">Amount:</label>
+                    <input type="number" id="amt" name="amt" placeholder="Enter Amount" required>
+                </form>
+            </div>
+            <div class="boxfortopup">
+                <nav class="start" onclick="redirectCreatenew()">Top up</nav>
+            </div>
+
+            <h1>Top-Up Your Paypex Account</h1>
+            <p>Choose the amount you want to add to your Account:</p>
+        </div>
+    </div>
+</body>
+<script>
+   function updateBalanceDisplay() {
+            const balance = parseFloat(localStorage.getItem("balance")) || 100.50;
+            document.getElementById("balanceDisplay").innerText = `Balance: $${balance.toFixed(2)}`;
+        }
+
+        updateBalanceDisplay();
+
+
+    // Function to update the balance and display the new value
+    function updateBalance(amount) {
+        // Retrieve the balance from localStorage
+        let balance = parseFloat(localStorage.getItem("balance")) || 100.50;
+
+        // Update the balance
+        balance += amount;
+
+        // Store the updated balance back to localStorage
+        localStorage.setItem("balance", balance.toFixed(2));
+
+        // Display the new balance
+        document.getElementById("balanceDisplay").innerText = `Balance: $${balance.toFixed(2)}`;
+    }
+
+    function redirectCreatenew() {
+        const amount = parseFloat(document.getElementById("amt").value);
+        if (isNaN(amount) || amount <= 0) {
+            alert("Please enter a valid amount to top up.");
+            return;
+        }
+
+        const topUpLimit = 10000;
+        if (amount > topUpLimit) {
+            alert("You can only top up up to $10,000 at a time.");
+            return;
+        }
+
+        // Call the function to update the balance in page 1
+        updateBalance(amount);
+
+        // Add a delay of 1 second (1000 milliseconds) before redirection
+        setTimeout(() => {
+            window.location.href = "PaymentHome.html";
+            alert("Your Top-up Has been Successful!");
+        }, 1000);
+    }
+</script>
+
+</html>

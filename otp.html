@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+ <!--
+        I declare that this code was written by me. 
+ I will not copy or allow others to copy my code. 
+ I understand that copying code is considered as plagiarism.
+ 
+ Student Name: Triston lim
+ Student ID: 22012871
+ Class: E63C
+ Date/Time Last modified: 11.06 am 1/8/2023
+ 
+    -->
+<head>
+    <title>otp</title>
+</head>
+<style>
+    body {
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+    h1{
+position: absolute;
+bottom: calc(60%);
+        font-size: 80px;
+
+    }
+    h2{
+        font-size: 40px ;
+        margin-top: -5px;
+        margin-left: 98px;
+    }
+
+.otp{
+    margin-top: 250px;
+    margin-left: 600px;
+}
+    .otp input{
+        width: 50px;
+        font-size: 32px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        margin: 2px;
+        border: 2px solid #55525c;
+        background:  white;
+        font-weight: bold;
+        color: black;
+        outline: none;
+        transition: all 0.1s;
+    }
+    .boxforenter {
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        padding: 10px;
+        border-radius: 40px;
+        margin-top: 30px;
+        margin-left: 600px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 20%;
+        height: 40px;
+    }
+</style>
+
+<body>
+
+    <div class="otp">
+        <h1>
+            Enter otp
+        </h1>
+        <input type="text" class="otp-input" id="otp1" maxlength="1">
+<input type="text" class="otp-input" id="otp2" maxlength="1">
+<input type="text" class="otp-input" id="otp3" maxlength="1">
+<input type="text" class="otp-input" id="otp4" maxlength="1">
+
+        
+
+    </div>
+    <div class = "boxforenter">
+        <h2 class = "start" onclick = "redirectCreatenew()"> Enter</h2>
+    </div>
+
+
+</body>
+<div style="margin-top: 350px ;">
+</div>
+<script>
+    function generateRandomNumber() {
+      return Math.floor(Math.random() * 10).toString();
+    }
+  
+    document.addEventListener("DOMContentLoaded", function () {
+      const otpInputs = document.querySelectorAll(".otp-input");
+  
+      otpInputs.forEach((input) => {
+        input.value = generateRandomNumber();
+      });
+  
+      otpInputs[0].addEventListener("input", function () {
+        otpInputs[1].focus();
+      });
+  
+      otpInputs[1].addEventListener("input", function () {
+        otpInputs[2].focus();
+      });
+  
+      otpInputs[2].addEventListener("input", function () {
+        otpInputs[3].focus();
+      });
+  
+      otpInputs[3].addEventListener("input", function () {
+        // If all inputs are filled, do something (e.g., submit the form)
+        // For this example, we are redirecting to a new page after 4 characters are entered.
+        if (
+          otpInputs[0].value &&
+          otpInputs[1].value &&
+          otpInputs[2].value &&
+          otpInputs[3].value
+        ) 
+      {}
+      });
+    });
+  </script>
+  <script>
+    function redirectCreatenew(){
+        window.location.href = "LoginHomepage.html";
+    }
+</script>
+  
+</html>

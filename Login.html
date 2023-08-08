@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            color: white;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+        /* Existing CSS styles remain the same */
+        form {
+    
+            position: absolute;
+            right: 400px;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+            color: rgb(70, 70, 70)
+            
+        }
+          h2 {
+            text-align: right;
+            margin-right: 425px;
+            font-size: 30px;
+            margin-bottom: 40px;
+        }
+        p {
+            text-align: right;
+            margin-right: 400px;
+            margin-top:  -20px;
+        }
+        /* New CSS to enlarge the input fields */
+        input {
+            height: 45px;
+            width: 160%;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            background-color: rgb(255, 0, 255);
+            color: white;
+            position: absolute;
+            right: -125px;
+        }
+        hr {
+            margin: 0;
+            margin-left: 800px;
+            margin-bottom: 20px;
+            
+        }
+        .img1{
+            position: absolute;
+            top: calc(25%);
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="img1">
+        <img src="Logo.jpg">
+    </div>
+    <h2>Login</h2>
+    <p>Sign in to continue</p>
+    <hr width="50%" color="black">
+    <form onsubmit="return handleLogin()">
+        <label for="Em">Please enter Email:</label>
+        <input type="email" id="Em" name="Em" required>
+
+        <label for="pwd">Please enter password:</label>
+        <input type="password" id="pwd" name="pwd" required>
+        <nav>
+            <a href="ForgotPassword.html" style="color: lightblue;">Forgot Username/Password?</a>
+        </nav>
+        <input type="submit" value="LOGIN">
+    </form>
+
+    <div style="margin-top: 620px;"></div>
+    <script>
+        function handleLogin() {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+            var emailInput = document.getElementById("Em").value;
+            var passwordInput = document.getElementById("pwd").value;
+
+            if (!emailRegex.test(emailInput)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (!passwordRegex.test(passwordInput)) {
+                alert(
+                    "Please enter a password that contains at least one number, one uppercase letter, one lowercase letter, and is at least 8 characters long."
+                );
+                return false;
+            }
+
+            // Get user data from LocalStorage
+            const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+            // Check if the user exists and credentials match
+            const user = users.find((u) => u.email === emailInput && u.password === passwordInput);
+
+            if (!user) {
+                alert("Invalid email or password.");
+                return false;
+            }
+
+            // Store user data in session storage or redirect to the dashboard page
+            // For this example, let's store user data in session storage and redirect to dashboard.html
+            sessionStorage.setItem("currentUser", JSON.stringify(user));
+            window.location.href = "otp.html";
+
+            return false; // Prevent form submission (as we're redirecting manually)
+        }
+    </script>
+</body>
+</html>

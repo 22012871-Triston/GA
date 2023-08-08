@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+ <!--
+        I declare that this code was written by me. 
+ I will not copy or allow others to copy my code. 
+ I understand that copying code is considered as plagiarism.
+ 
+ Student Name: Triston lim
+ Student ID: 22012871
+ Class: E63C
+ Date/Time Last modified: 11.06 am 1/8/2023
+ 
+    -->
+<head>
+    <title>Payment method</title>
+</head>
+<style>
+    label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    form {
+
+        margin-left: 600px;
+        margin-top: -600px;
+        width: 50%;
+    }
+
+    input {
+        height: 40px;
+        width: 160%
+    }
+
+    h1 {
+        margin-left: 110px;
+        position: relative;
+        top: 100px;
+        font-size: 40px;
+    }
+
+    h2 {
+        margin-left: 180px;
+        position: relative;
+        top: 90px;
+        font-size: 40px;
+    }
+
+    h3 {
+        position: absolute;
+        top: calc(3%);
+        right: 450px;
+        font-size: 30px;
+
+    }
+
+    .Payment-pic {
+        margin-left: 100px;
+        position: relative;
+        top: 100px;
+    }
+
+    .boxforAdd {
+        background-color: rgb(94, 94, 252);
+        padding: 10px;
+        border-radius: 40px;
+        margin-top: 130px;
+        margin-left: 110px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 20%;
+    }
+
+    h4 {
+        margin-left: 100px;
+        font-size: 50px;
+    }
+</style>
+
+<body>
+    <h1>
+        Add card payment to
+    </h1>
+    <h2>
+        your account
+    </h2>
+    <img src="Payment.JPG" alt="Card" class="Payment-pic">
+    <h3>
+        Card Information
+    </h3>
+    <div class="boxforAdd">
+        <h4 class="start" onclick="redirectCreatenew()"> Add
+        </h4>
+    </div>
+    <form>
+        <label for="cardNumber"></label>
+        <input type="text" id="cardNumber" name="cardNumber" placeholder="Card number    MM/YY/CC" required>
+
+        <label for="expirationDate"></label>
+        <input type="text" id="expirationDate" name="expirationDate" placeholder="Exp date" required>
+
+        <label for="cvv"></label>
+        <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+
+        <label for="streetAddress"></label>
+        <input type="text" id="streetAddress" name="streetAddress" placeholder="Street address" required>
+
+        <label for="country"></label>
+        <input type="text" id="Country" name="Country" placeholder="Country" required>
+
+        <label for="city"></label>
+        <input type="text" id="city" name="city" placeholder="City" required>
+
+        <label for="state"></label>
+        <input type="text" id="State" name="State" placeholder="State" required>
+
+        <label for="zip"></label>
+        <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
+    </form>
+</body>
+
+<script>
+    // Regular expressions for validation
+    const cardNumberRegex = /^\d{16}$/;
+    const expirationDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    const cvvRegex = /^\d{3}$/;
+
+    // Function to validate card information
+    function validateCardInfo() {
+        const cardNumberInput = document.getElementById('cardNumber');
+        const expirationDateInput = document.getElementById('expirationDate');
+        const cvvInput = document.getElementById('cvv');
+
+        const cardNumberIsValid = cardNumberRegex.test(cardNumberInput.value);
+        const expirationDateIsValid = expirationDateRegex.test(expirationDateInput.value);
+        const cvvIsValid = cvvRegex.test(cvvInput.value);
+
+        if (!cardNumberIsValid) {
+            alert('Please enter a valid 16-digit card number');
+            cardNumberInput.focus();
+            return false;
+        }
+
+        if (!expirationDateIsValid) {
+            alert('Please enter a valid expiration date in the format MM/YY');
+            expirationDateInput.focus();
+            return false;
+        }
+
+        if (!cvvIsValid) {
+            alert('Please enter a valid 3-digit CVV');
+            cvvInput.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    function redirectCreatenew() {
+        if (validateCardInfo()) {
+            window.location.href = "PaymentHome.html";
+            alert("Payment Method Added Successfully!");
+        }
+    }
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from being submitted
+
+        // Call the function to validate card information and redirect if valid
+        redirectCreatenew();
+    });
+</script>
+</html>

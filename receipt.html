@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+     <!--
+        I declare that this code was written by me. 
+ I will not copy or allow others to copy my code. 
+ I understand that copying code is considered as plagiarism.
+ 
+ Student Name: Triston lim
+ Student ID: 22012871
+ Class: E63C
+ Date/Time Last modified: 11.06 am 1/8/2023
+ 
+    -->
+<head>
+    <title>Receipt</title>
+    </head>
+    <style>
+.img1{
+   margin-left: 470px;
+}
+h1{
+    margin-left: 720px;
+    margin-top: -160px;
+    font-size: 40px;
+}
+h2{
+font-size: 45px;
+margin-left: 650px;
+margin-top: 70px;
+}
+h3{
+    font-size: 45px;
+    margin-left: 650px;
+margin-top: -20px;
+color: aqua;
+}
+h4{
+    font-size: 35px;
+    margin-left: 550px;
+margin-top: -20px;
+color: black;
+}
+h5{
+    font-size: 45px;
+    margin-left: 620px;
+margin-top: -48px;
+color: grey;
+}
+h6{
+    font-size: 15px;
+color: black;
+margin-top: 0px;
+}
+h7{
+    font-size: 20px;
+color: black;
+
+}
+h8{
+ font-size: 20px;
+color: black;
+position: absolute;
+top: calc(5%);
+right: 10px;
+}
+h9{
+    position: absolute;
+ font-size: 23px;
+color: black;
+top: calc(40%);
+right: 10px;
+}
+h10{
+ font-size: 23px;
+color: black;
+position: absolute;
+top: calc(40%);
+right: 200px;
+}
+h11{
+ font-size: 23px;
+color: black;
+position: absolute;
+top: calc(75%);
+right: 290px;
+}
+h12{
+    position: absolute;
+ font-size: 23px;
+color: black;
+top: calc(75%);
+right: 10px;
+}
+
+
+.boxforaddress{
+        position: absolute;
+        background-color: blue;
+        bottom: calc(26%);
+        left: 39%;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 20%;
+        height: 30px;
+
+    }
+    .boxforsend{
+        position: absolute;
+        background-color: blue;
+        bottom: calc(1%);
+        left: 36%;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 26%;
+        height: 150px;
+
+    }
+    hr {
+            margin: 0;
+            margin-top: 80px;
+            margin-left: -10px;
+    }
+
+    h15{
+        font-size: 20px;
+    }
+
+
+    
+    </style>
+    <body>
+        <h15>
+            <a href="LoginHomepage.html">Back to Homepage</a>
+        </h15>
+        <div class="img1">  
+            <img src="josh.jpg">
+        </div>
+        <h1>
+            Josh <br> @slay
+        </h1>
+        <h2 id="balanceDisplay">
+            $10.00
+        </h2>
+        <h3>
+            SGD
+        </h3>
+        <h4>
+            Goods and services payment
+        </h4>
+        <h5
+            id="paymentDescription">
+        </h5>
+        <div class = "boxforaddress">
+            <h6>
+                Your shipping address
+            </h6>
+        </div>
+        <div class = "boxforsend">
+            <h7>
+                You are sending with
+            </h7>
+            <h8>
+                change
+            </h8>
+            <h10>
+Paypex Balance(SGD)
+            </h10>
+            <h9 id="balancechange">
+                $10.00 SGD
+            </h9>
+            <hr width="104%"
+    color ="black">
+    <h11>
+        You will pay
+    </h11>
+    <h12 id="balancepay">
+        $10.00 SGD
+    </h12>
+        </div>
+    </body>
+
+<script>
+    const paymentAmount = localStorage.getItem("paymentAmount");
+    const paymentDescription = localStorage.getItem("paymentDescription");
+    document.getElementById("paymentDescription").textContent = paymentDescription;
+
+document.getElementById("balanceDisplay").innerHTML = `$${paymentAmount}`;
+document.getElementById("balancechange").innerHTML = `$${paymentAmount} SGD`;
+document.getElementById("balancepay").innerHTML = `$${paymentAmount} SGD`; 
+</script>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+     <!--
+        I declare that this code was written by me. 
+ I will not copy or allow others to copy my code. 
+ I understand that copying code is considered as plagiarism.
+ 
+ Student Name: Triston lim
+ Student ID: 22012871
+ Class: E63C
+ Date/Time Last modified: 11.06 am 1/8/2023
+ 
+    -->
+    <head>
+        <title>Send payment</title>
+    </head>
+    <style>
+h1{
+    text-align: center;
+    margin-top: 80px;
+    font-size: 80px;
+}
+input{
+    margin-left: 460px;
+    width: 500px;
+    height: 60px;
+    padding: 10px;
+        border-radius: 40px;
+}
+.boxfornext {
+        background-color: gray;
+        padding: 10px;
+        border-radius: 40px;
+        margin-top: 30px;
+        margin-left: 465px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 20%;
+        height: 40px;
+    }
+    h2{
+        font-size: 30px;
+       position:absolute;
+       top : calc(44%);
+       margin-left: 115px;
+
+    }
+.img1{
+margin-top: 30px;
+    margin-left: 300px;
+   
+}
+</style>
+<body>
+    <h1>
+        Send payment to anyone
+    </h1>
+    <input type ="text" list ="input" placeholder="🔎 Name, @username, email, mobile" >
+    <datalist id = "input">
+<option value = "Josh">Josh</option>
+<option value = "Mary">Mary</option>
+<option value = "James">James</option>
+<option value = "Rose">Rose</option>
+<option value = "Sally">Sally</option>
+    </datalist>
+    <div class = "boxfornext">
+<h2
+    class="start" onclick="redirectCreatenew()"> Next
+</h2>
+    </div>
+    <div class="img1">
+        <img src="contactlogo.jpeg">
+    </div>
+</body>
+<script>
+function redirectCreatenew(){
+    window.location.href = "Josh.html";
+}
+</script>
+    </html>

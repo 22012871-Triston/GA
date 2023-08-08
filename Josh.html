@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<!--
+        I declare that this code was written by me. 
+ I will not copy or allow others to copy my code. 
+ I understand that copying code is considered as plagiarism.
+ 
+ Student Name: Triston lim
+ Student ID: 22012871
+ Class: E63C
+ Date/Time Last modified: 11.06 am 1/8/2023
+ 
+    -->
+
+<head>
+    <title>Josh</title>
+</head>
+<style>
+    .img1 {
+        margin-left: 470px;
+    }
+
+    h1 {
+        margin-left: 720px;
+        margin-top: -160px;
+        font-size: 40px;
+    }
+
+    input[type="text"] {
+        border: none;
+        background-color: transparent;
+        font-size: 50px;
+        margin-left: 640px;
+        margin-top: 40px;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    input[name="search"]::placeholder {
+        font-size: 50px;
+        margin-left: 100px;
+        margin-top: 40px;
+    }
+
+    input[name="currency"]::placeholder {
+        font-size: 50px;
+        text-align: center;
+        margin: 240px;
+        padding: 5px;
+        color: aqua;
+    }
+
+    input[name="for"]::placeholder {
+        font-size: 50px;
+        right: 50%;
+    }
+
+    .boxforcontinue {
+        position: absolute;
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        ;
+        bottom: calc(15%);
+        left: 40%;
+        padding: 10px;
+        border-radius: 40px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 20%;
+    }
+
+    h2 {
+        font-size: 26px;
+        margin-left: 100px;
+
+    }
+
+    h3 {
+        font-size: 40px;
+        margin-left: 710px;
+        margin-top: 340px;
+        color: aqua;
+
+    }
+
+    #btn-paypal-checkout {
+        position: absolute;
+        top: 90%;
+        left: 42.5%;
+    }
+</style>
+
+<body>
+    <div class="img1">
+        <img src="josh.jpg">
+    </div>
+    <h1>
+        Josh <br> @slay
+    </h1>
+    <form>
+        <input type="text" name="money" placeholder="$0.00" />
+        <input type="text" name="currency" placeholder="SGD" />
+        <input type="text" name="for" placeholder="+ What is this payment for?" />
+    </form>
+    <div style="margin-right: 400px ;">
+
+    </div>
+    <div class="boxforcontinue">
+        <h2 class="start" onclick="redirectCreatenew()"> Continue
+        </h2>
+    </div>
+    <h3>
+        <a href="sendpayment.html" style="color: aqua">Cancel</a>
+    </h3>
+
+    <script>
+        function redirectCreatenew() {
+            const enteredAmount = parseFloat(document.querySelector('input[name="money"]').value);
+            const balance = parseFloat(localStorage.getItem("balance")) || 100.50;
+
+            if (isNaN(enteredAmount) || enteredAmount <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+
+            const topUpLimit = 1000;
+            if (enteredAmount > topUpLimit) {
+                alert("You can only top up up to $1,000 at a time.");
+                return;
+            }
+
+
+            if (balance < enteredAmount) {
+                alert("Insufficient balance!");
+            }
+            else {
+                const newBalance = balance - enteredAmount;
+                localStorage.setItem("balance", newBalance);
+                localStorage.setItem("paymentAmount", enteredAmount);
+                setTimeout(() => {
+                    window.location.href = "receipt.html";
+                }, 1000);
+                alert("Your payment has been successful!");
+                localStorage.setItem("paymentDescription", document.querySelector('input[name="for"]').value);
+            }
+
+        }
+
+    </script>
+</body>
+
+<!-- paypal button will be rendered here using Javascript -->
+
+<div id="btn-paypal-checkout"></div>
+
+
+
+<script>
+
+    window.addEventListener("load", function () {
+
+        var cartItems = [{
+
+            name: "Product 1",
+
+            description: "Description of product 1",
+
+            quantity: 1,
+
+            price: 50,
+
+            sku: "prod1",
+
+            currency: "USD"
+
+        }, {
+
+            name: "Product 2",
+
+            description: "Description of product 2",
+
+            quantity: 3,
+
+            price: 20,
+
+            sku: "prod2",
+
+            currency: "USD"
+
+        }, {
+
+            name: "Product 3",
+
+            description: "Description of product 3",
+
+            quantity: 4,
+
+            price: 10,
+
+            sku: "prod3",
+
+            currency: "USD"
+
+        }];
+
+
+
+        var total = 0;
+
+        for (var a = 0; a < cartItems.length; a++) {
+
+            total += (cartItems[a].price * cartItems[a].quantity);
+
+        }
+
+
+
+        // Render the PayPal button
+
+        paypal.Button.render({
+
+
+
+            // Set your environment
+
+            env: 'sandbox', // sandbox | production
+
+
+
+            // Specify the style of the button
+
+            style: {
+
+                label: 'checkout',
+
+                size: 'medium', // small | medium | large | responsive
+
+                shape: 'pill', // pill | rect
+
+                color: 'gold', // gold | blue | silver | black,
+
+                layout: 'vertical'
+
+            },
+
+
+
+            // PayPal Client IDs - replace with your own
+
+            // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+
+
+            client: {
+
+                sandbox: 'AVreyQLrr6h6BDI2zyt1x42k9zIx2ZfnEwTTtEjL3o5hjam_4AOkcq8Bf0Ai4kyroQ2vKnqZ2cCkEurx',
+
+                production: ''
+
+            },
+
+
+
+            funding: {
+
+                allowed: [
+
+                    paypal.FUNDING.CARD,
+
+                    paypal.FUNDING.ELV
+
+                ]
+
+            },
+
+
+
+            payment: function (data, actions) {
+
+                return actions.payment.create({
+
+                    payment: {
+
+                        transactions: [{
+
+                            amount: {
+
+                                total: total,
+
+                                currency: 'USD'
+
+                            },
+
+                            item_list: {
+
+                                // custom cartItems array created specifically for PayPal
+
+                                items: cartItems
+
+                            }
+
+                        }]
+
+                    }
+
+                });
+
+            },
+
+
+
+            onAuthorize: function (data, actions) {
+
+                return actions.payment.execute().then(function () {
+
+                    // you can use all the values received from PayPal as you want
+
+                    console.log({
+
+                        "intent": data.intent,
+
+                        "orderID": data.orderID,
+
+                        "payerID": data.payerID,
+
+                        "paymentID": data.paymentID,
+
+                        "paymentToken": data.paymentToken
+
+                    });
+
+
+
+                    function paymentMade(orderID, payerID, paymentID, paymentToken) {
+
+                        var ajax = new XMLHttpRequest();
+
+                        ajax.open("POST", "paypal.php", true);
+
+
+
+                        ajax.onreadystatechange = function () {
+
+                            if (this.readyState == 4) {
+
+                                if (this.status == 200) {
+
+                                    var response = JSON.parse(this.responseText);
+
+                                    console.log(response);
+
+                                }
+
+
+
+                                if (this.status == 500) {
+
+                                    console.log(this.responseText);
+
+                                }
+
+                            }
+
+                        };
+
+
+
+                        var formData = new FormData();
+
+                        formData.append("orderID", orderID);
+
+                        formData.append("payerID", payerID);
+
+                        formData.append("paymentID", paymentID);
+
+                        formData.append("paymentToken", paymentToken);
+
+                        ajax.send(formData);
+
+                    }
+
+                });
+
+            },
+
+
+
+            onCancel: function (data, actions) {
+
+                console.log(data);
+
+            }
+
+
+
+        }, '#btn-paypal-checkout');
+
+    });
+
+</script>
+
+<!-- Load the required checkout.js script -->
+
+<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+
+
+
+<!-- Load the required Braintree components. -->
+
+<script src="https://js.braintreegateway.com/web/3.39.0/js/client.min.js"></script>
+
+<script src="https://js.braintreegateway.com/web/3.39.0/js/paypal-checkout.min.js"></script>
+
+
+
+
+</html>
